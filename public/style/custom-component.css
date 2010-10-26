@@ -1,0 +1,38 @@
+#www-semanticprogrammer-org .slogan {
+	position: relative;
+	float: left;
+	top: 0.3em; 
+	left: 10em;
+	margin: 0;
+}
+
+#page-navigator {
+	margin: 0;
+	border-width: 0 1px 0 1px;
+   border-style: solid;
+}
+
+#page-navigator li {
+	margin: 1px 0 1px 0;
+	min-width: 7em;
+	text-align: center;
+	border-width: 0 1px 0 0;
+	border-style: solid;
+}
+
+#user-navigator {
+	margin: 0;
+	border-bottom: dotted 1px;
+}
+
+#user-navigator li {
+  border-width: 0 0 0 1px;
+  border-style: dotted;
+}
+
+#breadcrumbs-navigator {
+	margin: 0;
+	padding: 0.3em 0; 
+	border-width: 0 0 1px 0;
+	border-style: solid;	
+}

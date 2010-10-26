@@ -1,0 +1,71 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+	font-family: Helvetica, 'Trebuchet MS', Trebuchet, Verdana, Arial;
+}
+
+.header {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	border-bottom: 1px solid;
+}
+
+.footer {
+	clear: both;
+	overflow: hidden;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	border-top: 1px solid;
+}
+
+.page {
+	position: relative;
+	margin: 1em;
+}
+
+form {
+	position: relative;
+	margin: 1em auto;
+	border: 1px solid;
+}
+
+form>.body {
+	clear: both;
+	position: relative;
+	overflow: hidden;
+	height: 100%;
+	margin: 1em 0.5em;
+}
+
+fieldset {
+	margin: 0.5em;
+	padding: 1em;
+	border: 1px solid;
+}
+
+legend {
+	font-weight: bold;
+}
+
+.layer {
+	position: relative;
+}
+
+.section {
+	margin: 1em 0.5em 0 1em;
+	padding-bottom: 0.5em;
+}
+
+.block {
+	margin: 1em;
+	padding: 0;
+}
+
+p {
+	margin: 0;
+	padding: 0.5em;
+	font-size: 0.8em;
+}

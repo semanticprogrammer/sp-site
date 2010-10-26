@@ -1,0 +1,29 @@
+{ identifier: 'name',
+  label: 'name',
+  items: [
+     {name:'Web Development', level:'1',
+         children:[
+            {name:'Web Site', href:'technology-web_site.xhtml'},
+            {name:'Web Design', href:'technology-web_design.xhtml'},
+            {name:'CSS', href:'technology-css.xhtml'},
+            {name:'JavaScript', href:'technology-javascript.xhtml'}
+         ]},
+     {name:'Java EE', level:'1',
+         children:[
+            {name:'JPA & EJB', href:'technology-jpa_ejb.xhtml'},
+            {name:'JavaServer Faces', href:'technology-jsf.xhtml'},
+            {name:'Java Servlet', href:'#'},
+            {name:'Web Service', href:'#'},
+            {name: 'SOA', href:'technology-soa.xhtml'}
+         ]},
+     {name:'Java', href:'technology-java.xhtml', level:'1'},
+     {name:'Database', href:'technology-database.xhtml', level:'1'},
+     {name:'Access Control', href:'technology-access_control.xhtml', level:'1'},
+     {name:'Programming Paradigms', level:'1',
+         children:[
+            {name:'AOP', href:'programming_paradigm-aop.xhtml'},
+            {name:'DSL', href:'programming_paradigm-dsl.xhtml'}
+         ]},
+     {name:'XML Handling', href:'current-books.xhtml', level:'1'},
+     {name:'Software Development', href:'software_development.xhtml', level:'1'}
+]}

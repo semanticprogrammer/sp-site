@@ -1,0 +1,173 @@
+body {
+    background: #b9d483 url(../image/body-background.jpg) repeat fixed left top;
+}
+
+.title, .slogan, .figure>p {
+	color: black;
+}
+
+.subtitle {
+  color: #003399;
+}
+
+.legal {
+    color: #a775a1;
+}
+
+a {
+    color: #ae4eb5;
+}
+
+a img {
+    border: none;
+}
+
+.page>.body {
+    border-color: #a775a1;
+    background: #e8f3c3 url(../image/page-background.jpg) repeat-x scroll left top;
+}
+
+.form>.body {
+    background: url(../image/area-background-even.jpg) repeat scroll left top;
+}
+
+.form>.footer {
+    background: url(../image/area-background.jpg) repeat scroll left top;
+}
+
+.page>.header {
+   background: none;
+   color: black;
+}
+
+.page>.footer {
+    background: none;
+}
+
+.section > .byline {
+  color: #003399;
+}
+
+.block, .menu {
+	background-color: #F1F1D8;
+	border-color: #6E6B5C;
+}
+
+.menu > ul > li.selected, .menubar > ul > li.selected {
+  background-color:#FFF4D8;
+}
+
+.menu>ul>li>a, .menubar>ul>li>a {
+	border-color: transparent;
+}
+
+.menu li.selected>a, .menubar > ul > li.selected>a {
+  background-color: #FFF4D8;
+  color: #7F170F;
+  border-color: #7F170F;
+}
+
+.menu li>a:hover, .menubar ul > li>a:hover {
+	background-color: #cff;
+}
+
+li.separator, .menu ul>li.parent {
+  border-color: #003399;
+}
+
+a.tooltip:hover span {
+	background-color:#cff;
+	color:#000;
+	border-color: #0cf;
+}
+
+/* ----------------------------------------- table ------------------------------------------------ */
+
+table {
+	border-color: #000000;
+}
+
+thead {
+	background-color: #DCDBBD;
+}
+
+th, td {
+	border-color: #6E6B5C;
+}
+
+tr.even {
+	background-color: #F1F1D8;
+}
+
+tr.odd {
+	background-color: #FFFFFF;
+}
+
+table.hover-row tbody>tr:hover {
+  background-color: #FFEC8B;
+  color: #000000;
+}
+
+td .selected {
+	background-color: #A8E990;
+}
+
+td .link {
+  color: #003399;
+}
+
+/*
+thead tr:hover {
+  background-color: transparent;
+  color: inherit;
+}
+*/
+
+/* ----------------------------------------- form ------------------------------------------------ */
+
+form {
+	background-color: #F5F4EB;
+}
+
+form.background {
+	background-color: #FFFFFF;
+}
+
+form .header {
+	background-color: #DCDBBD;
+	border-color: #6E6B5C;
+}
+
+form .footer {
+	background-color: #EEEBDC;
+	border-color: #6E6B5C;
+}
+
+fieldset {
+	background-color: #EEEBDC;
+	border-color: #ccc;
+}
+
+label > .required {
+	color:#760000;
+}
+
+.ok {
+  color: #00B713;
+  border-color: #00B713;
+}
+
+.warning {
+  color: red;
+  border-color: red;
+}
+
+/* ----------------------------------------- elements ------------------------------------------------ */
+
+select[disabled="disabled"] {
+	color: black;
+}
+
+.date {
+  color: #003399;
+}

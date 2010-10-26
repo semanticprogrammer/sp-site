@@ -1,0 +1,13 @@
+#page-navigator {
+	background-color: #F1F1D8;
+}
+
+#page-navigator li.selected>a {
+  color: #7F170F;
+	border-color: #7F170F;	
+}
+
+#www-semanticprogrammer-org .menu li>a:hover, #www-semanticprogrammer-org .menubar li>a:hover {
+	color: #970000;
+	border-color: #FF4D00;
+}

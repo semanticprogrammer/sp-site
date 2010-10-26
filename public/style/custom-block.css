@@ -1,0 +1,20 @@
+#www-semanticprogrammer-org {
+   min-width: 760px;
+   max-width: 1200px;
+}
+
+#left-column {
+   width: 14em;
+}
+
+#right-column {
+   width: 12em;
+}
+
+#title-column {
+   min-width: 12em;
+}
+
+#publishing-column {
+   min-width: 6em;
+}

@@ -1,0 +1,10 @@
+<div id="page-navigator" class="menubar">
+   <ul>
+      <li class="selected"><a href="main.xhtml">Main</a></li>
+      <li><a href="technology-web_site.xhtml">Technology</a></li>
+      <li><a href="production-css_framework.xhtml">Production</a></li>
+      <li><a href="research.xhtml">Research Lab</a></li>
+      <li><a href="community.xhtml">Community</a></li>
+      <li><a href="market.xhtml">Market Place</a></li>
+   </ul>
+</div>

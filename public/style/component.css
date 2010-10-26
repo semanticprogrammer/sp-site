@@ -1,0 +1,272 @@
+h1, h2, h3, h4, h5, h6 {
+   margin: 0;
+   padding: 0.25em;
+}
+
+h1 {
+   font-size: 1.2em;
+   font-weight: normal;
+}
+
+h2 {
+   font-size: 1em;
+   font-weight: bold;
+}
+
+h3 {
+   font-size: 0.8em;
+   font-weight: bold;
+}
+
+h4 {
+   font-size: 0.7em;
+   font-weight: bold;
+}
+
+h5 {
+   font-size: 0.6em;
+   font-weight: bold;
+}
+
+h6 {
+   font-size: 0.5em;
+   font-weight: bold;
+}
+
+.subtitle {
+   font-size: 0.8em;
+   font-weight: normal;
+   text-align: left;
+}
+
+label {
+   margin: 0 0 0 0.25em;
+   font-size: 0.8em;
+   font-weight: normal;
+}
+
+input {
+   margin: 0 0.25em 0.5em 0.25em;
+}
+
+input[type="submit"] {
+   margin: 0.5em;
+}
+
+.page>.header>h1 {
+   text-transform: uppercase;
+   letter-spacing: 0.1em;
+}
+
+.logo {
+   float: left;
+   margin: 0;
+   padding: 0;
+}
+
+.slogan {
+   font-size: 0.8em;
+   font-weight: bold;
+   font-style: oblique;
+}
+
+.legal {
+   padding: 0.3em 0.5em;
+   font-family: tahoma;
+   font-size: 0.7em;
+   font-weight: normal;
+   text-decoration: none;
+}
+
+.byline {
+   padding: 0.1em 0.5em;
+   font-family: Helvetica, 'Trebuchet MS';
+   font-size: 0.7em;
+   font-weight: normal;
+}
+
+ul.data {
+   list-style-image: none;
+   list-style-position: outside;
+   list-style-type: none;
+   margin: 0.5em;
+   padding: 0;
+}
+
+ul.value {
+   font-size: 0.8em;
+   font-weight: normal;
+}
+
+ul.data a {
+   padding: 0;
+}
+
+ol {
+   margin: 0.5em 0 0.5em 20px;
+   padding: 0 10px;
+}
+
+ol.value {
+   font-size: 0.8em;
+   font-weight: normal;
+}
+
+.block ol li {
+   margin: 0;
+   padding: 0;
+   border: 0;
+}
+
+/* -------------------- link ------------------------- */
+
+.link {
+   margin: 0;
+   padding: 0.25em;
+   text-decoration: none;
+   font-size: 0.8em;
+   font-weight: bold;
+}
+
+.normal.link, .value.link {
+   font-weight: normal;
+}
+
+.print.link {
+   background: url(../image/print.gif) no-repeat left top;
+   padding-left: 20px;
+}
+
+.external.link {
+   background: url(../image/external-link.gif) no-repeat right top;
+   padding-right: 10px;
+}
+
+.internal.link {
+   background-image: none;
+   padding-right: 0;
+}
+
+a[href^="mailto:"] {
+   background: url(../image/email.png) no-repeat right top;
+   padding-right: 15px;
+}
+
+a[href^="aim:"] {
+   background: url(../image/im.png) no-repeat right top;
+   padding-right: 15px;
+}
+
+/* -------------------- tooltip ------------------------- */
+
+a.tooltip {
+   position: relative;
+   z-index:24;
+}
+
+a.tooltip span {
+   display: none;
+}
+
+a.tooltip:hover span {
+   display: block;
+   position: absolute;
+   top: 2em;
+   left: 0em;
+   width: 13em;
+   padding: 0.25em;
+   border: 1px solid;
+   text-decoration: none;
+}
+
+/* -------------------- table ------------------------- */
+
+table {
+   margin: 0.5em 1em 1em;
+   border-collapse: collapse;
+   border: 1px solid;
+   font-size: 1em;
+}
+
+table.data {
+   margin: 1em;
+}
+
+caption {
+   margin: 1em 1em 0.5em;
+   padding: 0;
+   font-size: 1em;
+   font-weight: bold;
+   text-align: left;
+}
+
+th {
+   padding: 0.1em 0.5em;
+   border-left: solid 1px;
+   border-bottom: solid 1px;
+   font-size: 0.8em;
+   font-weight: bold;
+   text-align: left;
+}
+
+tr {
+   border-bottom: 1px solid;
+}
+
+td {
+   padding: 0;
+   border-left: solid 1px;
+   text-align: left;
+}
+
+/* -------------------- elements ------------------------- */
+
+.separator {
+   margin: 1em 0;
+   padding: 1em;
+   border-bottom: 1px inset;
+}
+
+.button {
+   margin: 0.25em;
+}
+
+/* -------------------- data types ------------------------- */
+
+.name {
+   font-size: 0.8em;
+   font-weight: bold;
+}
+
+span.name, div.name {
+   padding: 0.1em 0.5em;
+}
+
+.date {
+   font-family: Helvetica, 'Trebuchet MS';
+   font-size: 0.8em;
+}
+
+span.date, div.date {
+   padding: 0.1em 0.5em;
+}
+
+.value {
+   font-size: 0.8em;
+}
+
+span.value, div.value {
+   padding: 0.1em 0.5em;
+}
+
+.value.link {
+   padding: 0.1em 0.5em;
+}
+
+.description {
+   font-size: 0.8em;
+}
+
+span.description, div.description {
+   padding: 0.1em 0.5em;
+}

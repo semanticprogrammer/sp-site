@@ -1,0 +1,53 @@
+.border {
+	border: 1px solid;
+}
+
+.left-border {
+	border-left: 1px solid;
+}
+
+.right-border {
+	border-right: 1px solid;
+}
+
+.rounded-border {
+	border: 1px solid;
+	border-radius: 0.5em;
+}
+
+.dotted-border {
+	border: 1px dotted;
+}
+
+.dashed-border {
+	border: 1px dashed;
+}
+
+.double-border {
+	border: 3px double;
+}
+
+.groove-border {
+	border: 1px groove;
+}
+
+.ridge-border {
+	border: 1px ridge;
+}
+
+.inset-border {
+	border: 1px inset;
+}
+
+.outset-border {
+	border: 1px outset;
+}
+
+.hidden-border {
+	border: hidden;
+}
+
+.none-border {
+	border: none;
+}
+

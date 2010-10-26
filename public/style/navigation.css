@@ -1,0 +1,87 @@
+.menu {
+	margin: 1.5em 1em;
+	padding: 0;
+	border: solid 1px;
+}
+
+.menu > ul, .menubar > ul, .breadcrumbs > ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-size: 0.8em;
+}
+
+.menu.parent > ul {
+	font-size: 1em;
+}
+
+.menu > ul > li > ul {
+	margin-left: 1em;
+}
+
+.menu > ul > li.selected, .menubar > ul > li.selected {
+	font-weight: bold;
+}
+
+.menu > ul > li {
+	margin: 0 3px;	
+}
+
+.menu > ul > li.parent {
+	border-width: 0 0 1px 0;	
+	border-style: solid;
+	font-weight: bold;
+}
+
+.menu > ul > li.parent > ul {
+	font-weight: normal;
+}
+
+.menubar > ul > li {
+	display: inline-block;
+	border-width: 0 1px 1px 1px;
+	border-style: solid;
+}
+
+.menubar.noborder > ul > li {
+	display: inline-block;
+	border-width: 0 1px 0 0;
+	border-style: none;
+}
+
+.menu > ul > li > a, .menubar > ul > li > a {
+	display: block;
+	margin: 0 1px;
+	padding: 0.2em 0.5em;
+	text-decoration: none;
+	border-width: 1px 1px 2px 1px;
+	border-style: solid;
+}
+
+.menu > ul > li.selected>a, .menubar > ul > li.selected>a {
+	cursor: default;
+}
+
+.breadcrumbs > ul > li {
+	display: inline-block;
+	font-weight: normal;
+}
+
+.breadcrumbs > ul > li:before {
+	content: ">";
+	font-weight: bold;
+}
+
+.breadcrumbs > ul > li:first-child:before {
+	content: " ";
+}
+
+.breadcrumbs > ul > li > a {
+	padding: 0.5em;
+	text-decoration: none;
+}
+
+.breadcrumbs > ul > li.selected > a {
+	cursor: default;
+	text-decoration: underline;
+}
