@@ -43,22 +43,22 @@ db.open(function(err, db) {
                   throw err;
                }
                db.collection(filename, function(err, collection) {
-                  sys.puts(sys.inspect(data.toString()));
-                  collection.insert(data.toString());
+                  sys.puts("filename:" + filename);
+                  sys.puts(sys.inspect(JSON.parse(data)));
+                  collection.insert(JSON.parse(data));
                   collection.count(function(err, count) {
                      sys.puts("There are " + count + " records in the " + filename + " collection. Here they are:");
                      collection.find(function(err, cursor) {
                         cursor.each(function(err, item) {
                            if(item != null) {
                               sys.puts(sys.inspect(item));
-//                              sys.puts("created at " + new Date(item._id.generationTime) + "\n")
+                           // sys.puts("created at " + new Date(item._id.generationTime) + "\n")
                            }
                         // Null signifies end of iterator
                         });
-                     });          
+                     });
                   });
                });                  
-               //          eval(data.toString());
                console.log("'" + filename + "' data loaded.");
                filesRead += 1;
                if (filenames.length === filesRead) {

@@ -1,11 +1,7 @@
 { "posts" : [
           {"title": "The First Draft Production Page Has Finished", "date": "January 19, 2010", 
-          	"content": "<p>
-                     We decided to add a new element in main menu! Take a look at first draft of <a href="production-css_framework.html">production</a> page.
-                  </p>"},
+          	"content": "We decided to add a new element in main menu!"},
           {"title": "CSS Framework Table Finished", "date": "January 14, 2010", 
-          	"content": "<p>
-                     We have finished the <a href="css-frameworks.html">list</a> of css frameworks. CSS Resources <a href="technology-web_design.html">page</a> also have a couple of new links.
-                  </p>"}
+          	"content": "of css frameworks. CSS Resources"}
    ]
 }
