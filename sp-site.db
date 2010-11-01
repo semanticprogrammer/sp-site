@@ -1,6 +1,6 @@
-{"key":"post_1","val":{"id":"post_1","title":"post 1","content":"This is my first post"}}
-{"key":"post_2","val":{"id":"post_2","title":"post 2","content":"This is my second post"}}
-{"key":"post_3","val":{"id":"post_3","title":"post 3","content":"This is my third post"}}
+{"key":"post_1","val":{"id":"post_1","title":"post 1", "date": "01/19/10", "content":"<p>This is my first post</p>"}}
+{"key":"post_2","val":{"id":"post_2","title":"post 2", "date": "01/14/10", "content":"This is my second post"}}
+{"key":"post_3","val":{"id":"post_3","title":"post 3", "date": "04/2/10", "content":"This is my third post"}}
 {"key":"comment_1","val":{"id":"comment_1","postid":"post_1","content":"This is my first comment"}}
 {"key":"comment_2","val":{"id":"comment_2","postid":"post_1","content":"This is my second comment"}}
 {"key":"comment_3","val":{"id":"comment_3","postid":"post_1","content":"This is my third comment"}}

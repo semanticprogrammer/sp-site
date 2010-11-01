@@ -44,7 +44,7 @@ a img {
     background: none;
 }
 
-.section > .byline {
+article > .byline, .section > .byline {
   color: #003399;
 }
 

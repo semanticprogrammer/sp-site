@@ -1,0 +1,13 @@
+<div class="header enclose">
+   <img alt="" src="image/logo.png" class="float-left logo"/>
+   <div class="float-right noborder menubar" style="position: relative; top: 0.5em;">
+      <ul>
+         <li>
+            <a href="#">Preferences</a>
+         </li>
+         <li>
+            <a href="#">Login</a>
+         </li>
+      </ul>
+   </div>
+</div>

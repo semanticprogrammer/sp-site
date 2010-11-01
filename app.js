@@ -3,11 +3,18 @@ var
   path = require('path'),
   connect = require('connect'),
   datastore = require('./datastore'),
+  jqtpl = require( "jqtpl" ),
   meryl = require('meryl');
 
 var controllerDir = 'controller',
   viewDir = 'view',
   staticDir = 'public';
+  
+var opts = {
+  templateDir: 'view',
+  templateExt: '.html',
+  templateFunc: jqtpl.render
+};  
 
 datastore.load(function () {
 
@@ -39,7 +46,7 @@ datastore.load(function () {
 
   // Run Meryl once controllers loaded
   loadControllers(controllerDir, function () {
-    meryl.run({hostname: "localhost", templateDir: viewDir});
+    meryl.run(opts);
     console.log('listening...');
   });
 });
