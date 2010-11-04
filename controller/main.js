@@ -9,7 +9,8 @@ var posts = {posts: [{key:1, title:"post 1", date: "01/19/10"},{key:2, title:"po
 
   get('/main', function(req, resp) {
     //var posts = datastore.findPosts();
-    resp.render('main', posts);
+//    resp.render('main', posts);
+    resp.renderTemplate('main', posts);
   });
 }
 
