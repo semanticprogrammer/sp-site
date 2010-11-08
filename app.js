@@ -1,4 +1,5 @@
 var
+sys = require('sys'),
 fs = require('fs'),
 path = require('path'),
 connect = require('connect'),

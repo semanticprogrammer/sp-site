@@ -1,0 +1,20 @@
+<div class="menu">
+   <script language="JavaScript" type="text/javascript">
+     dojo.require("dojo.data.ItemFileReadStore");
+     dojo.require("dijit.Tree");
+     dojo.require("dojo.parser");  // scan page for widgets and instantiate them
+   </script>
+   <div dojoType="dojo.data.ItemFileReadStore" jsId="continentStore"
+        url="script/technology-menu-items.json">
+   </div>
+   <div dojoType="dijit.Tree" id="tree1" store="continentStore" query="{level:'1'}"
+        rootId="rootId" path="['rootId','Web Development', 'CSS']"
+        labelAttr="name" showRoot="false">
+      <script type="dojo/method" event="onClick" args="item">
+        if (item) {
+           window.location = continentStore.getValue(item, "href");
+            /*dijit.byId("tree1").attr('path', ['rootId','Web Development', 'CSS']);*/
+        }
+      </script>
+   </div>
+</div>

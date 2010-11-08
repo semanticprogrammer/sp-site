@@ -1,12 +1,112 @@
-{>"header"/}  
-{>"page-header"/}
-{>"page-navigator"/}       
-{#posts}
-<article>
-   <header>
-      <h3>{title}</h3>
-   </header>
-   <time datetime="{date}" class="byline"><{date}></time>
-</article>
-	  {/posts}
-{>"footer"/}
+{>page/}
+{<content}
+   <div class="border body">
+      <div id="left-column" class="column">
+         <div class="menu">
+            <div class="header">
+               <h3 class="center">Current</h3>
+            </div>
+            <ul>
+               <li>
+                  <a href="current-news_events.xhtml">News &amp; Events</a>
+               </li>
+               <li>
+                  <a href="current-ideas.xhtml">Ideas</a>
+               </li>
+               <li>
+                  <a href="current-articles_blogs.xhtml">Articles &amp; Blogs</a>
+               </li>
+               <li>
+                  <a href="current-books.xhtml">Books</a>
+               </li>
+            </ul>
+         </div>
+         <div class="border block">
+            <div class="header">
+               <h3 class="center">Message Board</h3>
+            </div>
+            <p>
+               <strong>NetBeans Innovators Grants:</strong><br/>
+               Due to the high number of submissions, the judges need a little more time to review projects. Winners will be announced the week of 7-11 April.
+            </p>
+         </div>
+      </div>
+      <div class="column">
+         <h2 class="center">News and Events</h2>
+         {#posts}
+         <article>
+            <header>
+               <h3>{title}</h3>
+            </header>
+            <time datetime="{date}" class="byline"><{date}></time>
+         </article>
+         {/posts}
+         <div class="section">
+            <h3>The First Draft Production Page Has Finished</h3>
+            <div class="byline">January 19, 2010</div>
+            <p>
+               We decided to add a new element in main menu! Take a look at first draft of <a href="production-css_framework.html">production</a> page.
+            </p>
+         </div>
+         <div class="section">
+            <h3>CSS Framework Table Finished</h3>
+            <div class="byline">January 14, 2010</div>
+            <p>
+               We have finished the <a href="css-frameworks.html">list</a> of css frameworks. CSS Resources <a href="technology-web_design.html">page</a> also have a couple of new links.
+            </p>
+         </div>
+         <div class="section">
+            <h3>Java SE 6 Update 10 Beta</h3>
+            <div class="byline">April 2, 2008</div>
+            <p>
+               Java SE 6 Update 10 is an update release that introduces new features and enhancements aimed at providing an optimized consumer-end user experience.
+            </p>
+         </div>
+         <div class="section">
+            <div class="byline">April 2, 2008</div>
+            <p>
+               Fixed issue related to "LMAP Enterprise" <strong>timeout</strong>.
+               Enabled indication when <strong>insurance's effective date</strong> is bigger than present time.
+               Enabled indication when patient's age less than 18.
+               Enabled indication when patient's insurance is small commercial insurance(means handled differently).
+               PCP input box shown in red when plan type is PPO and PCP assigned or
+               when plan type is HMO and no PCP assigned.
+               Patient's PCP now shown on visits page.
+            </p>
+         </div>
+         <div class="section">
+            <div class="byline">October 19, 2007</div>
+            <p>
+               Enabled indication what kind of insurance changes have been made.
+               Insurance Policy IDs in "Patient Service" Database cleaned from incorrected characters
+               such as dash, slash, asterisc and space!
+               Enabled protection for PolicyID entry that allows to enter only alphanumerical characters.
+               Not more than first two diagnoses will be submitted to billing for every procedure!
+            </p>
+         </div>
+         <div class="section">
+            <div class="byline">October 17, 2007</div>
+            <p>
+               Implemented "Insurance Resources" Page.
+               Using this page user will be able to see scanned insurance card and related resources!
+               Also enabled protection for diagnosis pointers entry that
+               allow user to enter only such characters as digit or coma.
+            </p>
+         </div>
+      </div>
+      <div class="column">
+         <div class="border block">
+            <div class="header">
+               <h3 class="center">Pending Tasks</h3>
+            </div>
+            <ol class="value data">
+               <li>Blog about using mapping file for JPA</li>
+               <li>Blog - Do we have to write jsp pages in standard syntax?</li>
+               <li>Tutorial - How to create CSS Framework</li>
+               <li>Blog - What should be done to implement easy to use data binding system.</li>
+               <li>Article - Is it possible to use classless persistence entities?</li>
+            </ol>
+         </div>
+      </div>
+   </div>   
+   {/content}
