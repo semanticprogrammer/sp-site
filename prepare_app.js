@@ -68,3 +68,27 @@ exports.prepareControllers = function (controllerDir, onLoad) {
       });
    });
 };
+
+exports.prepareData = function (opts, onLoad) {
+   fs.readdir(opts.dataDir, function (err, filenames) {
+      if (err) {
+         throw err;
+      }
+      var filesRead = 0;
+      filenames.forEach(function (filename) {
+         fs.readFile(path.join(opts.dataDir, filename), function (err, data) {
+            if (err) {
+               throw err;
+            }
+            opts.dataStore = eval(data.toString());
+//            opts.dataStore = JSON.parse(data.toString());
+            sys.puts(sys.inspect(opts.dataStore));
+            console.log("'" + filename + "' data prepared.");
+            filesRead += 1;
+            if (filenames.length === filesRead) {
+               onLoad();
+            }
+         });
+      });
+   });
+};
