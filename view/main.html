@@ -33,6 +33,9 @@
       </div>
       <div class="column">
          <h2 class="center">News and Events</h2>
+         {#data expr="user.name"}
+               {.}<h3>{expr}</h3>
+         {/data}
          {#posts}
          <article>
             <header>

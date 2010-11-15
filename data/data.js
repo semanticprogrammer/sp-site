@@ -7,7 +7,6 @@ opts.dataStore = {
       return '!!!!!!!!!!!!!';
    },
    currentURL: '',
-   currentAction: "selected",
    currentPage: function(chunk, context) {
       return (context.current().url.toUpperCase() == context.get('currentURL').toUpperCase()) ? "selected" : "";
    },
