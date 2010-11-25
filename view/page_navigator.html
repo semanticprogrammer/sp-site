@@ -1,9 +1,11 @@
 <div id="page-navigator" class="menubar">
   <ul>
       {#navigation}
+      {?.topMenu}
       <li class="{currentPage}">
          <a href="{url}">{name}</a>
       </li>
+      {/.topMenu}
       {/navigation}
    </ul>
 </div>

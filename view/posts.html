@@ -1,0 +1,43 @@
+{>page/}
+{<page_script}
+<script src="script/core.js" type="text/javascript;version=1.8"></script>
+   <script src="script/ajax.js" type="text/javascript;version=1.8"></script>
+   <script src="script/dom.js" type="text/javascript;version=1.8"></script>
+   {/page_script}
+   {<content}
+      <div class="border body">
+         <div class="column">
+            <table>
+               <thead>
+                  <tr>
+                     <th scope="col">Title</th>
+                     <th scope="col">Date</th>
+                     <th scope="col">Content</th>
+                  </tr>
+               </thead>
+               <col id="title"/>
+               <col id="date"/>
+               <tbody>
+                  {#posts}
+                  <tr>
+                     <td>
+                        <a href="/posts/{key}/edit'" onclick="sps.AJAX.delete({url: '/posts/{key}',
+                           onSuccess: function(data) {
+                              sps.Controls.createDOM(data);
+                           },
+                           onError: function(data) {alert('File Not Found')}
+                        })">{title}</a>
+                     </td>
+                     <td>
+               <time datetime="{date}" class="byline"><{date}></time>
+               </td>
+               <td>
+                  {content}
+               </td>
+               </tr>
+               {/posts}
+               </tbody>
+            </table>
+         </div>
+      </div>
+      {/content}

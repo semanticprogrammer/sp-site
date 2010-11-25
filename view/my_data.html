@@ -1,0 +1,19 @@
+{>page/}
+{<content}
+   <div class="border body">
+      <div class="column">
+         <div class="menu">
+            <div class="header">
+               <h3 class="center">My Data</h3>
+            </div>
+            <ul>
+               {#myData}
+               <li>
+                  <a href="{url}">{name}</a>
+               </li>
+               {/myData}
+            </ul>
+         </div>
+      </div>
+   </div>   
+{/content}
