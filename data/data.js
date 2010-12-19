@@ -33,6 +33,11 @@ opts.dataStore = {
          url: '/posts',
          name: 'Posts',
          template: 'posts'
+      },
+      {
+         url: '/posts/add',
+         name: 'Add Post',
+         template: 'add_post'      
       }
    ],
    myData: [

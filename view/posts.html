@@ -6,7 +6,7 @@
    <script type="text/javascript">
       function removePost() {
          if(!window.confirm('Are you sure?')) return false;
-         sps.AJAX.delete({this.url,
+         sps.AJAX.delete({this.href,
             onSuccess: function(data) {
                alert('Deleted Successful!')
             },
@@ -28,6 +28,7 @@
    {/page_script}
    {<content}
       <div class="border body">
+         <a href="/posts/add">Add Post</a>
          <div class="column">
             <table>
                <thead>
@@ -43,35 +44,22 @@
                   {#posts}
                   <tr>
                      <td>
-                        <a href="/posts/{key}/edit'" onclick="sps.AJAX.delete({url: '/posts/{key}',
-                           onSuccess: function(data) {
-                              sps.Controls.createDOM(data);
-                           },
-                           onError: function(data) {alert('File Not Found')}
-                        })" class="delete">{title}</a>
+                        {title}
                      </td>
                      <td>
-               <time datetime="{date}" class="byline"><{date}></time>
-               </td>
-               <td>
-                  {content}
-               </td>
-               <td>
-                  <a href="/languages/<%= language._id %>/edit">Edit</a>
-                  <%h postLink({href: '/languages/' + language._id + '/delete',
-                  onclick: "if(!window.confirm('Are you sure?')) return false;",
-                  text: 'Delete'}) %>
-                  http://hacks.mozilla.org/2010/11/firefox-4-html5-forms/
-
-                  <a onclick="sps.AJAX.delete({url: '/posts/{key}',
-                  onSuccess: function(data) {
-                     alert('Post File Not Found');
-                  },
-                  onError: function(data) {alert('File Not Found')}
-               })">Delete</a>
-               </td>
-               </tr>
-               {/posts}
+                        <time datetime="{date}" class="byline"><{date}></time>
+                     </td>
+                     <td>
+                        {content}
+                     </td>
+                     <td>
+                        <a href="/posts/{key}/edit">Edit</a>
+                     </td>
+                     <td>
+                        <a href="/posts/{key}" class="delete">Delete</a>                        
+                     </td>
+                  </tr>
+                  {/posts}
                </tbody>
             </table>
          </div>
