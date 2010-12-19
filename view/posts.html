@@ -3,6 +3,28 @@
 <script src="script/core.js" type="text/javascript;version=1.8"></script>
    <script src="script/ajax.js" type="text/javascript;version=1.8"></script>
    <script src="script/dom.js" type="text/javascript;version=1.8"></script>
+   <script type="text/javascript">
+      function removePost() {
+         if(!window.confirm('Are you sure?')) return false;
+         sps.AJAX.delete({this.url,
+            onSuccess: function(data) {
+               alert('Deleted Successful!')
+            },
+            onError: function(data) {alert('Problem!')}
+         });
+      };
+      function init() {
+         var elements = document.getElementsByClassName('delete');
+         for (var i = 0; i < elements.length; i++) {
+            elements[i].addEventListener("click", removePost, false);
+         }
+      };
+      document.onreadystatechange = function () {
+         if (document.readyState == "complete") {
+            init();
+         }
+      }
+   </script>
    {/page_script}
    {<content}
       <div class="border body">
@@ -26,13 +48,27 @@
                               sps.Controls.createDOM(data);
                            },
                            onError: function(data) {alert('File Not Found')}
-                        })">{title}</a>
+                        })" class="delete">{title}</a>
                      </td>
                      <td>
                <time datetime="{date}" class="byline"><{date}></time>
                </td>
                <td>
                   {content}
+               </td>
+               <td>
+                  <a href="/languages/<%= language._id %>/edit">Edit</a>
+                  <%h postLink({href: '/languages/' + language._id + '/delete',
+                  onclick: "if(!window.confirm('Are you sure?')) return false;",
+                  text: 'Delete'}) %>
+                  http://hacks.mozilla.org/2010/11/firefox-4-html5-forms/
+
+                  <a onclick="sps.AJAX.delete({url: '/posts/{key}',
+                  onSuccess: function(data) {
+                     alert('Post File Not Found');
+                  },
+                  onError: function(data) {alert('File Not Found')}
+               })">Delete</a>
                </td>
                </tr>
                {/posts}

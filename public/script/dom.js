@@ -1,5 +1,5 @@
 var sps = (function(use) {
-   sps.Controls = (function() {
+   use.Controls = (function() {
       var self = {};
       
       //https://developer.mozilla.org/en/new_in_javascript_1.7 Looping across objects

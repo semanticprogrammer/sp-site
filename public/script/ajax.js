@@ -1,5 +1,5 @@
 var sps = (function(use) {
-   sps.AJAX = (function() {
+   use.AJAX = (function() {
       var self = {};
       var options = {
          url: location.href,

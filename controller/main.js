@@ -25,6 +25,9 @@ with (meryl) {
 //   });
 
    get('/posts/add', function(req, resp) {
+      for (var propery in req.params) {
+        sys.puts("req.params[" + property +"]: "+ req.params[property]); 
+      }
    });
 
    post('/posts', function(req, resp) {
