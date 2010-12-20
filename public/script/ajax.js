@@ -71,6 +71,7 @@ var sps = (function(use) {
             }
          }
          try {
+            //            xhr.send("txtname=" + options.content);
             xhr.send(JSON.stringify(options.content));
          } catch (e) {
             options.onError();
@@ -82,7 +83,7 @@ var sps = (function(use) {
             return !xhr.status && location.protocol === "file:" ||
             (xhr.status >= 200 && xhr.status < 300 ) ||
             xhr.status === 304 || xhr.status === 0;
-         } catch(e) {}
+         } catch(e) {}         
          return false;
       };
 

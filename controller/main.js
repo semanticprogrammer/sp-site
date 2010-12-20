@@ -11,13 +11,11 @@ with (meryl) {
 
       options.dataStore.navigation.forEach(function(element, index, array) {
          if (element.url == options.dataStore.currentURL) {
-                        sys.puts("element.url = " + element.url);
             //            action = options.actionStore.navigation[options.dataStore.currentURL];
             action = element;
          }
       });
       if (action != null) {
-         sys.puts("action.template = " + action.template);
          resp.renderTemplate(action.template, options.dataStore); 
       }
    });
@@ -25,13 +23,15 @@ with (meryl) {
    //   get('/posts', function(req, resp) {
    //   });
 
-   post('/posts', function(req, resp) {
-      var postdataAsObject = qs.parse(req.postdata.toString());
-      if (postdataAsObject && postdataAsObject.post) {
-         options.dataStore.posts.push(postdataAsObject);
-      }
-      resp.redirect('/posts');
-   });
+post('/posts', function (req, resp) {
+   sys.puts(sys.inspect(req));
+  var postdataAsObject = qs.parse(req.postdata.toString());
+  if (postdataAsObject) {
+    sys.puts(sys.inspect(postdataAsObject));
+    options.dataStore.posts.push(postdataAsObject);
+  };
+  resp.redirect('/posts');
+});
 
    get('/posts/{id}', function(req, resp) {
       });

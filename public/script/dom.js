@@ -86,7 +86,8 @@ var sps = (function(use) {
          var elements = parentElement.querySelectorAll(selector);
          var name;
          var position = 0;
-         for each (element in elements) {
+         for (var property in elements) {
+            var element = elements[property];
             if (element.name) {
                name = element.name;
             } else if (element.id) {
@@ -106,7 +107,7 @@ var sps = (function(use) {
          var rows = table.querySelectorAll("tbody>tr");
 
          for (var t = 0, row; row = rows[t]; t++) {
-            let item = {};
+            var item = {};
             for (var i = 0, cell; cell = row.cells[i]; i++) {
                if (headers[i]) {
                   item[headers[i].innerHTML] = cell.innerHTML;
@@ -144,8 +145,10 @@ var sps = (function(use) {
       self.toDOM = function(object, parentElement) {
          var element;
          parentElement = parentElement || document;
-         for (let [name, value, type] in Iterator(object)) {
-            switch (type){
+
+         for (var property in object) {
+            var item = object[property];
+            switch (item.type){
                case "select":
                   element = document.createElement("select");
                   break;
@@ -155,9 +158,9 @@ var sps = (function(use) {
                default :
                   element = document.createElement("input");
             }
-            element.setAttribute("type", type);
-            element.setAttribute("name", name);
-            element.setAttribute("value", value);
+            element.setAttribute("type", item.type);
+            element.setAttribute("name", item.name);
+            element.setAttribute("value", item.value);
             parentElement.appendChild(element);
          }
       };
@@ -242,12 +245,13 @@ var sps = (function(use) {
             if (use.isArray(data[propName])) {
                thead = document.createElement("thead");
                table.appendChild(thead);
-               for each (var item in data[propName]) {
+               for (var property in data[propName]) {
+                  var item = data[propName][property];
                   row = document.createElement("tr");
                   thead.appendChild(row);
-                  for ( let [name,value] in Iterator(item) ) {
+                  for (var prop in item) {
                      cell = document.createElement("th");
-                     cell.innerHTML = name;
+                     cell.innerHTML = prop;
                      row.appendChild(cell);
                   }
                   break;
@@ -255,9 +259,9 @@ var sps = (function(use) {
                data[propName].forEach(function(item, index, array) {
                   row = document.createElement("tr");
                   tbody.appendChild(row);
-                  for ( let [name,value] in Iterator(item) ) {
+                  for (var prop in item) {
                      cell = document.createElement("td");
-                     cell.innerHTML = value;
+                     cell.innerHTML = item[prop];
                      row.appendChild(cell);
                   }
                });
@@ -275,16 +279,16 @@ var sps = (function(use) {
             if (use.isObject(element) && !use.isArray(element)) {
                row = document.createElement("tr");
                parent.appendChild(row);
-               for ( let [name,value] in Iterator(element) ) {
-                  if (use.isArray(value)) {
-                     if (use.isObject(value[0])) {
+               for (var property in element) {
+                  if (use.isArray(element[property])) {
+                     if (use.isObject(element[property][0])) {
                         if (use.isElement(cell)) {
-                           cell.setAttribute("rowspan", value.length + 1);
+                           cell.setAttribute("rowspan", element[property].length + 1);
                         }
-                        createRows(value, parent);
+                        createRows(element[property], parent);
                      }
                      else {
-                        value.forEach(function(element, index, array) {
+                        element[property].forEach(function(element, index, array) {
                            cell = document.createElement("td");
                            cell.innerHTML = element;
                            row.appendChild(cell);
@@ -293,7 +297,7 @@ var sps = (function(use) {
                   }
                   else {
                      cell = document.createElement("td");
-                     cell.innerHTML = value;
+                     cell.innerHTML = element[property];
                      row.appendChild(cell);
                   }
                }
@@ -325,12 +329,13 @@ var sps = (function(use) {
             if (use.isArray(data[propName])) {
                thead = document.createElement("thead");
                table.appendChild(thead);
-               for each (el in data[propName]) {
+               for (var property in data[propName]) {
+                  var el = data[propName][property];
                   row = document.createElement("tr");
                   thead.appendChild(row);
-                  for ( let [name,value] in Iterator(el) ) {
+                  for (var prop in el) {
                      cell = document.createElement("th");
-                     cell.innerHTML = name;
+                     cell.innerHTML = prop;
                      row.appendChild(cell);
                   }
                   break;
@@ -343,6 +348,7 @@ var sps = (function(use) {
          parent.appendChild(table);
       };
 
+
       self.createPropertyTable = function(data, parent) {
          parent = parent || document.body;
          table = document.createElement("table");
@@ -352,15 +358,16 @@ var sps = (function(use) {
             caption.appendChild(document.createTextNode(propName));
             table.appendChild(caption);
             if (use.isArray(data[propName])) {
-               for each (var item in data[propName]) {
+               for (var property in data[propName]) {
+                  var item = data[propName][property];
                   row = document.createElement("tr");
                   tbody.appendChild(row);
-                  for ( let [name,value] in Iterator(item) ) {
+                  for (var prop in item) {
                      cell = document.createElement("td");
-                     cell.innerHTML = name;
+                     cell.innerHTML = prop;
                      row.appendChild(cell);
                      cell = document.createElement("td");
-                     cell.innerHTML = value;
+                     cell.innerHTML = item[prop];
                      row.appendChild(cell);
                   }
                }
@@ -370,25 +377,25 @@ var sps = (function(use) {
          table.appendChild(tbody);
          parent.appendChild(table);
       };
-      //http://code.google.com/p/json-template/
-      //http://www.json.org/fatfree.html
-      http://docs.dojocampus.org/dojox/json/ref
-      //http://www.mongodb.org/display/DOCS/Database+References
-      self.createForm = function(data, parent) {
-         parent = parent || document.body;
-         var form = document.createElement("form");
-         var body = document.createElement("div");
-         for (var propName in data) {
-            header = document.createElement("header");
-            header.appendChild(document.createTextNode(propName));
-            form.appendChild(header);
-            if (use.isObject(data[propName])) {
-               createFields(data[propName], body);
+         //http://code.google.com/p/json-template/
+         //http://www.json.org/fatfree.html
+         http://docs.dojocampus.org/dojox/json/ref
+         //http://www.mongodb.org/display/DOCS/Database+References
+         self.createForm = function(data, parent) {
+            parent = parent || document.body;
+            var form = document.createElement("form");
+            var body = document.createElement("div");
+            for (var propName in data) {
+               header = document.createElement("header");
+               header.appendChild(document.createTextNode(propName));
+               form.appendChild(header);
+               if (use.isObject(data[propName])) {
+                  createFields(data[propName], body);
+               }
             }
-         }
-         form.appendChild(body);
-         parent.appendChild(form);
-      };
+            form.appendChild(body);
+            parent.appendChild(form);
+         };
 
       function createFields(data, parent) {
          function createField(name, value, type, parent) {
@@ -423,7 +430,8 @@ var sps = (function(use) {
 
          function createSelectByRef(refName, value, parent) {
             sps.AJAX.get(
-            {  url: refName + ".json",
+            {
+               url: refName + ".json",
                handleAs: 'json',
                onSuccess: function(data) {
                   select = createField(refName, value, "select", parent);
@@ -435,14 +443,17 @@ var sps = (function(use) {
                      }
                   });
                },
-               onError: function(data) {alert(refName + ' File Not Found')}
+               onError: function(data) {
+                  alert(refName + ' File Not Found')
+               }
             });
          }
          var ul = document.createElement("ul");
          parent.appendChild(ul);
-         for ( let [name,value] in Iterator(data) ) {
-            let type = "text";
-            let li = document.createElement("li");
+         for (var property in data) {
+            var value = data[property];
+            var type = "text";
+            var li = document.createElement("li");
             ul.appendChild(li);
             if (use.isArray(value)) {
                if (use.isObject(value[0])) {
@@ -457,19 +468,19 @@ var sps = (function(use) {
                }
             }
             else
-               if (use.isObject(value)) {
-                  fieldset = document.createElement("fieldset");
-                  legend = document.createElement("legend");
-                  legend.appendChild(document.createTextNode(name));
-                  fieldset.appendChild(legend);
-                  createFields(value, fieldset);
-                  li.appendChild(fieldset);
-               }
+            if (use.isObject(value)) {
+               fieldset = document.createElement("fieldset");
+               legend = document.createElement("legend");
+               legend.appendChild(document.createTextNode(property));
+               fieldset.appendChild(legend);
+               createFields(value, fieldset);
+               li.appendChild(fieldset);
+            }
             else {
                if (use.isBoolean(value)) {
                   type = "checkbox";
                }
-               createField(name, value, type, li);
+               createField(property, value, type, li);
             }
          }
       }

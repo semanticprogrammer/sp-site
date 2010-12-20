@@ -1,16 +1,17 @@
 {>page/}
 {<content}
    <div class="border body">
-      <form action="/posts/add" method="post">
+      <form action="/posts" method="post">
          <header>
             <h3>Create Post</h3>
          </header>
          <label for="key">Key:</label>
-         <input id="key" type="text"/>
+         <input id="key" name="key" type="text"/>
          <label for="title">Title:</label>
-         <input id="title" type="text"/>
+         <input id="title" name="title" type="text"/>
          <label for="date">Date:</label>
-         <input id="date" type="text"/>
+         <input id="date" name="date" type="text"/>
+         <textarea name="content" rows="3" colums="20" max-length="140" wrap="soft"></textarea>
          <button>Create</button>
       </form>
    </div>
