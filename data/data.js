@@ -10,6 +10,10 @@ opts.dataStore = {
    currentPage: function(chunk, context) {
       return (context.current().url.toUpperCase() == context.get('currentURL').toUpperCase()) ? "selected" : "";
    },
+   currentKey: '',
+   currentPost: function(chunk, context) {
+      return context.get("posts['currentKey']");
+   },   
    navigation: [
       {
          url: '/main',
@@ -38,6 +42,11 @@ opts.dataStore = {
          url: '/posts/add',
          name: 'Add Post',
          template: 'add_post'      
+      },
+      {
+         url: '/posts/edit',
+         name: 'Edit Post',
+         template: 'edit_post'      
       }
    ],
    myData: [

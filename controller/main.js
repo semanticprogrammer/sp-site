@@ -33,11 +33,12 @@ post('/posts', function (req, resp) {
   resp.redirect('/posts');
 });
 
-   get('/posts/{id}', function(req, resp) {
-      });
+get('/posts/{id}', function(req, resp) {
+   });
 
    get('/posts/{id}/edit', function(req, resp) {
-      });
+      options.dataStore.currentKey = req.params.id;
+   });
 
    put('/posts/{id}', function(req, resp) {
       });
