@@ -46,7 +46,7 @@ with (meryl) {
    //   });
 
    post('/posts', function (req, resp) {
-      sys.puts(sys.inspect(req));
+      sys.puts("OOOOOOO"+ req.postdata.toString());
       var postdataAsObject = qs.parse(req.postdata.toString());
       if (postdataAsObject) {
          sys.puts(sys.inspect(postdataAsObject));
@@ -59,16 +59,16 @@ with (meryl) {
       });
 
    put('/posts/{id}', function(req, resp) {
-      var postdataAsObject = qs.parse(req.postdata.toString());
+      sys.puts("UUUUUUU"+ req.postdata.toString().substring(1, req.postdata.toString().length - 1));
+      var postdataAsObject = qs.parse(req.postdata.toString().substring(1, req.postdata.toString().length - 2));
       if (postdataAsObject) {
          options.dataStore.posts.forEach(function(element, index, array) {
             if (element.key == req.params.id) {
-               sys.puts("update element = " + element.key);
                sys.puts(sys.inspect(postdataAsObject));
-               for (var property in postdataAsObject) {
-                  sys.puts(postdataAsObject[property]);
-               }
-               sys.puts("title = " + postdataAsObject.title);
+//               for (var property in postdataAsObject) {
+//                  sys.puts("property = " + property);
+//               }
+//               sys.puts("title = " + postdataAsObject.title);
                element.title = postdataAsObject.title;
                //array[index] = postdataAsObject;
             }
@@ -82,8 +82,9 @@ with (meryl) {
       options.dataStore.posts.forEach(function(element, index, array) {
          if (element.key == req.params.id) {
             sys.puts("delete element = " + element.key);
-            delete element;
+            array.splice(index, 1);
          }
       });
+      resp.redirect('/posts');
    });
    }
