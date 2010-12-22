@@ -5,11 +5,33 @@ with (meryl) {
    get('/', function(req, resp) {
       resp.redirect('/main');
    });
+   get('/posts/{id}/edit', function(req, resp) {
+      var pattern = new RegExp('\\' + 'edit' + '$');      
+      options.dataStore.currentKey = req.params.id;
+      var action = null;
+      options.dataStore.currentURL = req.url;
+
+      options.dataStore.navigation.forEach(function(element, index, array) {
+
+         if (element.url == options.dataStore.currentURL) {
+            //            action = options.actionStore.navigation[options.dataStore.currentURL];
+            action = element;
+         }
+         else if (pattern.test(options.dataStore.currentURL) && pattern.test(element.url)) {
+            action = element;
+         //            options.dataStore.currentKey = 1;
+         }
+      });
+      if (action != null) {
+         resp.renderTemplate(action.template, options.dataStore); 
+      }      
+   });   
    get('/*', function(req, resp) {
       var action = null;
       options.dataStore.currentURL = req.url;
 
       options.dataStore.navigation.forEach(function(element, index, array) {
+
          if (element.url == options.dataStore.currentURL) {
             //            action = options.actionStore.navigation[options.dataStore.currentURL];
             action = element;
@@ -23,25 +45,37 @@ with (meryl) {
    //   get('/posts', function(req, resp) {
    //   });
 
-post('/posts', function (req, resp) {
-   sys.puts(sys.inspect(req));
-  var postdataAsObject = qs.parse(req.postdata.toString());
-  if (postdataAsObject) {
-    sys.puts(sys.inspect(postdataAsObject));
-    options.dataStore.posts.push(postdataAsObject);
-  };
-  resp.redirect('/posts');
-});
-
-get('/posts/{id}', function(req, resp) {
+   post('/posts', function (req, resp) {
+      sys.puts(sys.inspect(req));
+      var postdataAsObject = qs.parse(req.postdata.toString());
+      if (postdataAsObject) {
+         sys.puts(sys.inspect(postdataAsObject));
+         options.dataStore.posts.push(postdataAsObject);
+      };
+      resp.redirect('/posts');
    });
 
-   get('/posts/{id}/edit', function(req, resp) {
-      options.dataStore.currentKey = req.params.id;
-   });
+   get('/posts/{id}', function(req, resp) {    
+      });
 
    put('/posts/{id}', function(req, resp) {
-      });
+      var postdataAsObject = qs.parse(req.postdata.toString());
+      if (postdataAsObject) {
+         options.dataStore.posts.forEach(function(element, index, array) {
+            if (element.key == req.params.id) {
+               sys.puts("update element = " + element.key);
+               sys.puts(sys.inspect(postdataAsObject));
+               for (var property in postdataAsObject) {
+                  sys.puts(postdataAsObject[property]);
+               }
+               sys.puts("title = " + postdataAsObject.title);
+               element.title = postdataAsObject.title;
+               //array[index] = postdataAsObject;
+            }
+         });
+      };
+      resp.redirect('/posts');        
+   });
 
    meryl['delete']('/posts/{id}', function(req, resp) {
       sys.puts("req.params.id:" + req.params.id);
