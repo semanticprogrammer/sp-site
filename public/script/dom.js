@@ -6,6 +6,13 @@ var sps = (function(use) {
       //http://www.dojotoolkit.com/reference-guide/dojo/create.html#dojo-create
       //http://api.prototypejs.org/dom/form/element/getvalue/
       //http://api.prototypejs.org/dom/dollarf/
+
+      self.removeElement = function(id, parent) {
+         parent = parent || document;
+         var element = parent.getElementById(id);
+         element.parentNode.removeChild(element);
+      }
+
       self.getValue = function(node) {
          var result = null;
          if (node && !node.disabled) {
@@ -81,7 +88,7 @@ var sps = (function(use) {
                selector = null;
             }
          }
-         selector = selector || "input[type='text'], input[type='checkbox'], select";
+         selector = selector || "input[type='text'], input[type='checkbox'], input[type='date'], select, textarea";
          parentElement = parentElement || document.forms[0];
          var elements = parentElement.querySelectorAll(selector);
          var name;

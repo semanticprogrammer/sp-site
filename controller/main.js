@@ -19,7 +19,6 @@ with (meryl) {
          }
          else if (pattern.test(options.dataStore.currentURL) && pattern.test(element.url)) {
             action = element;
-         //            options.dataStore.currentKey = 1;
          }
       });
       if (action != null) {
@@ -42,15 +41,10 @@ with (meryl) {
       }
    });
 
-   //   get('/posts', function(req, resp) {
-   //   });
-
    post('/posts', function (req, resp) {
-      sys.puts("OOOOOOO"+ req.postdata.toString());
-      var postdataAsObject = qs.parse(req.postdata.toString());
-      if (postdataAsObject) {
-         sys.puts(sys.inspect(postdataAsObject));
-         options.dataStore.posts.push(postdataAsObject);
+      var data = qs.parse(req.postdata.toString());
+      if (data) {
+         options.dataStore.posts.push(data);
       };
       resp.redirect('/posts');
    });
@@ -59,18 +53,11 @@ with (meryl) {
       });
 
    put('/posts/{id}', function(req, resp) {
-      sys.puts("UUUUUUU"+ req.postdata.toString().substring(1, req.postdata.toString().length - 1));
-      var postdataAsObject = qs.parse(req.postdata.toString().substring(1, req.postdata.toString().length - 2));
-      if (postdataAsObject) {
+      var data = JSON.parse(req.postdata.toString());
+      if (data) {
          options.dataStore.posts.forEach(function(element, index, array) {
             if (element.key == req.params.id) {
-               sys.puts(sys.inspect(postdataAsObject));
-//               for (var property in postdataAsObject) {
-//                  sys.puts("property = " + property);
-//               }
-//               sys.puts("title = " + postdataAsObject.title);
-               element.title = postdataAsObject.title;
-               //array[index] = postdataAsObject;
+               array[index] = data;
             }
          });
       };
@@ -78,13 +65,10 @@ with (meryl) {
    });
 
    meryl['delete']('/posts/{id}', function(req, resp) {
-      sys.puts("req.params.id:" + req.params.id);
       options.dataStore.posts.forEach(function(element, index, array) {
          if (element.key == req.params.id) {
-            sys.puts("delete element = " + element.key);
-            array.splice(index, 1);
+            array.splice(index, 1);            
          }
       });
-      resp.redirect('/posts');
    });
    }

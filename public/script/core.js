@@ -150,15 +150,15 @@ var sps = (function(use) {
       return proxy;
    }
 
-   function $(selector, element) {
-      element = element || document;
-      return element.querySelector(selector);
-   }
-
-   function $$(selector, element) {
-      element = element || document;
-      return element.querySelectorAll(selector);
-   }
+//   function $(selector, element) {
+//      element = element || document;
+//      return element.querySelector(selector);
+//   }
+//
+//   function $$(selector, element) {
+//      element = element || document;
+//      return element.querySelectorAll(selector);
+//   }
 
    return use;
 }(sps || {}));

@@ -18,43 +18,43 @@
    {/page_script}
    {<content}
       <div class="border body">
-         <a href="/posts/add">Add Post</a>
-         <div class="column">
-            <table>
-               <thead>
-                  <tr>
-                     <th scope="col">Title</th>
-                     <th scope="col">Date</th>
-                     <th scope="col">Content</th>
-                     <th scope="col"></th>
-                     <th scope="col"></th>
-                  </tr>
-               </thead>
-               <col id="title"/>
-               <col id="date"/>
-               <col id="content"/>
-               <tbody>
-                  {#posts}
-                  <tr>
-                     <td>
-                        {title}
-                     </td>
-                     <td>
-                        <time datetime="{date}" class="byline"><{date}></time>
-                     </td>
-                     <td>
-                        {content}
-                     </td>
-                     <td>
-                        <a href="/posts/{key}/edit">Edit</a>
-                     </td>
-                     <td>
-                        <a href="#" onclick="removePost('/posts/{key}')">Delete</a>
-                     </td>
-                  </tr>
-                  {/posts}
-               </tbody>
-            </table>
+         <div class="block">
+            <a href="/posts/add" class="border link button">Add Post</a>            
          </div>
+         <table>
+            <thead>
+               <tr>
+                  <th scope="col">Title</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Content</th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+               </tr>
+            </thead>
+            <col id="title"/>
+            <col id="date"/>
+            <col id="content"/>
+            <tbody>
+               {#posts}
+               <tr>
+                  <td>
+                     {title}
+                  </td>
+                  <td>
+                     <time datetime="{date}" class="byline"><{date}></time>
+                  </td>
+                  <td>
+                     {content}
+                  </td>
+                  <td>
+                     <a href="/posts/{key}/edit" class="link button">Edit</a>
+                  </td>
+                  <td>
+                     <a href="" onclick="removePost('/posts/{key}')" class="link button">Delete</a>
+                  </td>
+               </tr>
+               {/posts}
+            </tbody>
+         </table>
       </div>
       {/content}
