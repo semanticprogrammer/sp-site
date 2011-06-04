@@ -22,7 +22,7 @@ exports.prepareTemplate = function(templateName, opts) {
    }
 };
 
-exports.prepareTemplates = function(opts, onLoad) {
+_prepareTemplates = function(opts, callback) {
    fs.readdir(opts.templateDir, function (err, filenames) {
       if (err) {
          throw err;
@@ -39,7 +39,7 @@ exports.prepareTemplates = function(opts, onLoad) {
                console.log(templateName + ' template prepared.');
                filesRead += 1;
                if (filenames.length === filesRead) {
-                  onLoad();
+                  callback();
                }
             });
          }
@@ -47,7 +47,9 @@ exports.prepareTemplates = function(opts, onLoad) {
    });
 };
 
-exports.prepareControllers = function (controllerDir, onLoad) {
+exports.prepareTemplates = function(opts, _) { return _prepareTemplates(opts, _); };
+
+_prepareControllers = function (controllerDir, callback) {
    fs.readdir(controllerDir, function (err, filenames) {
       if (err) {
          throw err;
@@ -62,14 +64,16 @@ exports.prepareControllers = function (controllerDir, onLoad) {
             console.log("'" + filename + "' controller prepared.");
             filesRead += 1;
             if (filenames.length === filesRead) {
-               onLoad();
+               callback();
             }
          });
       });
    });
 };
 
-exports.prepareData = function (opts, onLoad) {
+exports.prepareControllers = function(controllerDir, _) { return _prepareControllers(controllerDir, _); };
+
+_prepareData = function (opts, onLoad) {
    fs.readdir(opts.dataDir, function (err, filenames) {
       if (err) {
          throw err;
@@ -92,3 +96,5 @@ exports.prepareData = function (opts, onLoad) {
       });
    });
 };
+
+exports.prepareData = function(opts, _) { return _prepareData(opts, _); };

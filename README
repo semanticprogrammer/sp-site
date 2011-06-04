@@ -1,6 +1,13 @@
-sp-site is web site for semantic programmer.
+"sp-site" is example of web site that demonstrate using of futures.
+Beside this, example preparing you to use a new pattern/paradigm Data Middleware View(DMV) as better alternative comparing to MVC.
 
-Please visit http://www.semanticprogrammer.org
+Before run example you should compile "prepare_app_.js" module using the following command: $ node-streamline -c prepare_app_.js 
+This will create a file "prepare_app.js" that can be used as regular kind of javascript module.
+
+For details regarding benefits of using "streamline" library go to the following link:
+http://github.com/Sage/streamlinejs
+
+
 
 
 Contributors:

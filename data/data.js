@@ -97,16 +97,16 @@ opts.dataStore = {
    ],
    posts: [{
       key:1,
-      title:"post 1",
+      title:"post 11",
       date: "01/19/10"
    },{
       key:2,
-      title:"post 2",
+      title:"post 22",
       date: "01/14/10",
       content: "This is post 2"
    },{
       key:3,
-      title:"post 3",
+      title:"post 33",
       date: "04/2/10"
    }]
 };

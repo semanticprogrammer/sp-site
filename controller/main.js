@@ -22,13 +22,12 @@ with (meryl) {
          }
       });
       if (action != null) {
-         resp.renderTemplate(action.template, options.dataStore); 
+         resp.render(action.template, options.dataStore); 
       }      
    });   
    get('/*', function(req, resp) {
       var action = null;
       options.dataStore.currentURL = req.url;
-
       options.dataStore.navigation.forEach(function(element, index, array) {
 
          if (element.url == options.dataStore.currentURL) {
@@ -37,11 +36,12 @@ with (meryl) {
          }
       });
       if (action != null) {
-         resp.renderTemplate(action.template, options.dataStore); 
+         resp.render(action.template, options.dataStore); 
       }
    });
 
    post('/posts', function (req, resp) {
+      console.log('/posts');
       var data = qs.parse(req.postdata.toString());
       if (data) {
          options.dataStore.posts.push(data);

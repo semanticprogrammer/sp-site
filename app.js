@@ -1,78 +1,44 @@
-var
-sys = require('sys'),
+var meryl = require('meryl'),
 fs = require('fs'),
 path = require('path'),
+util = require('util'),
 connect = require('connect'),
-//  datastore = require('./datastore'),
 dust = require('dust'),
-meryl = require('meryl'),
 prepareApp = require('./prepare_app');
 
-var 
-controllerDir = 'controller',
-viewDir = 'view',
-staticDir = 'public';
-  
+var env = JSON.parse(fs.readFileSync('./config/environment.js', 'utf-8'));
+
 var opts = {
-   templateDir: 'view',
-   templateExt: '.html',
+   templateDir: env.template.dir,
+   templateExt: env.template.ext,
    compileTemplateFunc: dust.compile,
    loadTemplateFunc: dust.loadSource,
    renderTemplateFunc: dust.render,
-   dataDir: 'data',
+   dataDir: env.dataDir,
    dataStore: {}
 };
 
-// Register plugins
-meryl.plug(connect.staticProvider({
-   root: staticDir
-}), connect.logger());
+meryl
+   .plug(connect.favicon(), connect.static(env.staticDir), connect.logger())
+   .plug(function (req, resp, next) {
+      resp.render = function (templatename, data) {
+         opts.renderTemplateFunc(templatename, data, function (err, output) {
+            if (err) {
+               throw err;
+            }
+            resp.end(output);
+         });
+      };
+      next();
+   });
 
-prepareApp.prepareTemplates(opts,  function () {
-   console.log('Finished preparing templates.');
-});
+function start(callback) {
+   prepareApp.prepareData(opts);
+   prepareApp.prepareTemplates(opts);
+   prepareApp.prepareControllers(env.controllerDir, callback);
+}
 
-// Run Meryl once controllers loaded
-prepareApp.prepareControllers(controllerDir, function () {
-   prepareApp.prepareData(opts, function () {
-      console.log('Finished preparing data...');
+start(function () {
    meryl.run(opts);
    console.log('listening...');
-   });
 });
-
-//datastore.load(function () {
-//
-//  // Register plugins
-//  meryl.plug(connect.staticProvider({root: staticDir}), connect.logger());
-//
-//  // Loads controllers automatically
-//  var loadControllers = function (controllerDir, onLoad) {
-//    fs.readdir(controllerDir, function (err, filenames) {
-//      if (err) {
-//        throw err;
-//      }
-//      var filesRead = 0;
-//      filenames.forEach(function (filename) {
-//        fs.readFile(path.join(controllerDir, filename), function (err, data) {
-//          if (err) {
-//            throw err;
-//          }
-//          eval(data.toString());
-//          console.log("'" + filename + "' controller loaded.");
-//          filesRead += 1;
-//          if (filenames.length === filesRead) {
-//            onLoad();
-//          }
-//        });
-//      });
-//    });
-//  };
-//
-//  // Run Meryl once controllers loaded
-//  loadControllers(controllerDir, function () {
-//    meryl.run(opts);
-//    console.log('listening...');
-//  });
-//});
-//
