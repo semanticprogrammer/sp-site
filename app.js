@@ -9,17 +9,17 @@ prepareApp = require('./prepare_app');
 var env = JSON.parse(fs.readFileSync('./config/environment.js', 'utf-8'));
 
 var opts = {
-   templateDir: env.template.dir,
+   templateDir: env.template.space,
    templateExt: env.template.ext,
    compileTemplateFunc: dust.compile,
    loadTemplateFunc: dust.loadSource,
    renderTemplateFunc: dust.render,
-   dataDir: env.dataDir,
+   dataDir: env.dataSpace,
    dataStore: {}
 };
 
 meryl
-   .plug(connect.favicon(), connect.static(env.staticDir), connect.logger())
+   .plug(connect.favicon(), connect.static(env.staticSpace), connect.logger())
    .plug(function (req, resp, next) {
       resp.render = function (templatename, data) {
          opts.renderTemplateFunc(templatename, data, function (err, output) {
@@ -35,7 +35,7 @@ meryl
 function start(callback) {
    prepareApp.prepareData(opts);
    prepareApp.prepareTemplates(opts);
-   prepareApp.prepareControllers(env.controllerDir, callback);
+   prepareApp.prepareControllers(env.controllerSpace, callback);
 }
 
 start(function () {

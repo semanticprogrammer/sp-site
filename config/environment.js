@@ -1,9 +1,9 @@
 {
-   "staticDir": "public",
-   "controllerDir": "controller",
-   "dataDir": "data",
+   "staticSpace": "public",
+   "controllerSpace": "controller",
+   "dataSpace": "data",
    "template": {
-      "dir": "view",
+      "space": "view",
       "ext": ".html"         
    }
 }

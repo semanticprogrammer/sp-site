@@ -1,5 +1,5 @@
 body {
-    background: #b9d483 url(../image/body-background.jpg) repeat fixed left top;
+    background: #b9d483 url(/image/body-background.jpg) repeat fixed left top;
 }
 
 .title, .slogan, .figure>p {
@@ -24,15 +24,15 @@ a img {
 
 .page>.body {
     border-color: #a775a1;
-    background: #e8f3c3 url(../image/page-background.jpg) repeat-x scroll left top;
+    background: #e8f3c3 url(/image/page-background.jpg) repeat-x scroll left top;
 }
 
 .form>.body {
-    background: url(../image/area-background-even.jpg) repeat scroll left top;
+    background: url(/image/area-background-even.jpg) repeat scroll left top;
 }
 
 .form>.footer {
-    background: url(../image/area-background.jpg) repeat scroll left top;
+    background: url(/image/area-background.jpg) repeat scroll left top;
 }
 
 .page>.header {
