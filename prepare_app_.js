@@ -1,7 +1,8 @@
 var util = require('util'),
 fs = require('fs'),
 meryl = require('meryl'),
-path = require('path');
+path = require('path'),
+flows = require('streamline/lib/util/flows');
 
 _prepareTemplates = function(_, opts) {
    var files = fs.readdir(opts.templateDir, _);
@@ -20,35 +21,14 @@ exports.prepareTemplates = function(opts, _) {
    return _prepareTemplates(_, opts);
 };
 
-//_prepareControllers = function (_, controllerDir) {
-//   var files = fs.readdir(controllerDir, _);
-//   for (var i = 0; i < files.length; i++) {
-//      var data = fs.readFile(path.join(opts.controllerDir, files[i]), _);
-//      eval(data.toString());
-//      console.log("'" + filename + "' controller prepared.");
-//   };
-//   _();
-//};
 
-_prepareControllers = function (callback, controllerDir) {
-   fs.readdir(controllerDir, function (err, filenames) {
-      if (err) {
-         throw err;
-      }
-      var filesRead = 0;
-      filenames.forEach(function (filename) {
-         fs.readFile(path.join(controllerDir, filename), function (err, data) {
-            if (err) {
-               throw err;
-            }
-            eval(data.toString());
-            console.log("'" + filename + "' controller prepared.");
-            filesRead += 1;
-            if (filenames.length === filesRead) {
-               callback();
-            }
-         });
-      });
+_prepareControllers = function (_, controllerDir) {
+   var filenames = fs.readdir(controllerDir, _);
+   flows.each(_, filenames, function (_, filename) {
+      var data = fs.readFile(path.join(controllerDir, filename),
+         _);
+      eval(data.toString());
+      console.log("'" + filename + "' controller prepared.");
    });
 };
 
